@@ -1,6 +1,6 @@
 /*---------------------------------------------------------------*\
   Author: Haraldo Filho
-  Date: Mar 22, 2025
+  Date: Mar 29, 2025
   Project name: One Service Filter for Letterboxd
   Description: Filter to show, in a Letterboxd list or watchlist,
   the films only available on the selected streaming service.
