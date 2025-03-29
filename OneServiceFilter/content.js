@@ -91,9 +91,9 @@
     processPage();
   }
 
-  function processPage() {
+  localStorage.setItem("lastService", currentService);
 
-    localStorage.setItem("lastService", currentService);
+  function processPage() {
 
     newItem.setAttribute('class', ' smenu-subselected');
 
@@ -139,12 +139,27 @@
           for (var i = films.childNodes.length-1; i >= 0; i--) {
             try {
               node = films.childNodes[i];
-              filmId = node.getElementsByTagName('div')[0].getAttributeNode('data-item-id').value;
+              try {
+                filmId = node.getElementsByTagName('div')[0].getAttributeNode('data-item-id').value;
+              } catch {
+                try {
+                  filmId = node.getElementsByTagName('div')[0].getAttributeNode('data-item-uid').value;
+                } catch (err) {
+                  console.log("ERROR: Unable to get film id");
+                  console.log("ERROR: " + err);
+                  continue;
+                }
+              }
+
               if (pageText.search(filmId) != -1) {
                 films.removeChild(node);
                 try {
                   filmName = node.getElementsByTagName('div')[0].getAttributeNode('data-film-name').value;
-                } catch {filmName = filmId}
+                } catch {
+                  try {
+                    filmName = node.getElementsByTagName('div')[0].getAttributeNode('data-film-slug').value;
+                  } catch {filmName = filmId}
+                }
                 console.log("'" + filmName + "' removed. Also available on '" + serviceName + "'");
                 numberOfFilms--;
               }
