@@ -1,6 +1,6 @@
 /*---------------------------------------------------------------*\
   Author: Haraldo Filho
-  Date: Mar 29, 2025
+  Date: Mar 30, 2025
   Project name: One Service Filter for Letterboxd
   Description: Filter to show, in a Letterboxd list or watchlist,
   the films only available on the selected streaming service.
@@ -8,6 +8,8 @@
 
 (function () {
   "use strict";
+
+  var state = localStorage.getItem("state");
 
   var url = window.location.href
 
@@ -87,13 +89,17 @@
   console.log("Last Service: " + lastService);
   console.log("Current Service: " + currentService);
 
-  if (currentService == lastService) {
+  if (state == "on" && currentService == lastService) {
     processPage();
+  } else {
+    localStorage.setItem("state", "off");
   }
 
   localStorage.setItem("lastService", currentService);
 
   function processPage() {
+
+    localStorage.setItem("state", "on");
 
     newItem.setAttribute('class', ' smenu-subselected');
 
