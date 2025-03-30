@@ -21,3 +21,5 @@ Select the directory 'FriendlyFilmLength' of the extensions repository and the e
 ## Usage
 
 Just load the extension and every time you visit a film page on Letterboxd the film length will be automatically converted!
+
+<img src="images/img_3.png" width="500"> <img src="images/img_4.png" width="500"> 
