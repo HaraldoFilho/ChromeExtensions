@@ -22,7 +22,11 @@
   function getHoursMinsText(mins) {
     var hours = Math.floor(mins/60);
     var mins = mins%60;
-    var hoursMins = hours + " h&nbsp;" + mins + " min";
+    if (hours > 0) {
+      var hoursMins = hours + " h&nbsp;" + mins + " min";
+    } else {
+      var hoursMins = mins + " min";
+    }
     return hoursMins;
   }
 
