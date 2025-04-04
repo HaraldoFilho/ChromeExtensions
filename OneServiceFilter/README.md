@@ -4,7 +4,7 @@ This is a Chrome extension for [Letterboxd](https://letterboxd.com/), to filter 
 
 ## Installation
 
-This extension is available on the [Chrome Web Store](https://chromewebstore.google.com/), but if you want, you can clone this repository into your local computer and load it on Chrome:
+This extension is available on the [Chrome Web Store](https://chromewebstore.google.com/detail/one-service-filter-for-le/iofoijepjkfkifjadahagmkfjklfejgh?authuser=0&hl=pt-BR), but if you want, you can clone this repository into your local computer and load it on Chrome:
 
 ```
 git clone https://github.com/HaraldoFilho/ChromeExtensions.git
