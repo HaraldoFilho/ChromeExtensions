@@ -8,18 +8,18 @@
 (function () {
   "use strict";
 
-  var mainTitle = document.getElementsByClassName('name js-widont prettify')[0].innerHTML;
+  var mainTitle = document.getElementsByClassName('name js-widont prettify')[0].innerText;
 
   try {
-    var originalTitle = document.getElementsByClassName('originalname')[0].innerHTML;
+    var originalTitle = document.getElementsByClassName('quoted-creative-work-title')[0].innerText;
   } catch {
     var originalTitle = "";
   }
 
   if (originalTitle != "") {
     var temp = mainTitle;
-    document.getElementsByClassName('name js-widont prettify')[0].innerHTML = originalTitle;
-    document.getElementsByClassName('originalname')[0].innerHTML = temp;
+    document.getElementsByClassName('name js-widont prettify')[0].innerText = originalTitle;
+    document.getElementsByClassName('quoted-creative-work-title')[0].innerText = temp;
   }
 
 })();
