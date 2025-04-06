@@ -1,7 +1,8 @@
 /*---------------------------------------------------------------*\
   Author: Haraldo Filho
-  Date: Mar 30, 2025
-  Project name: One Service Filter for Letterboxd
+  Project: One Service Filter for Letterboxd
+  Version: 1.3
+  Date: Apr 5, 2025
   Description: Filter to show, in a Letterboxd list or watchlist,
   the films only available on the selected streaming service.
 \*---------------------------------------------------------------*/
@@ -73,16 +74,29 @@
   var servicesMenuItems = document.getElementById('services-menu').getElementsByClassName('item');
   var servicesList = [];
   var servicesUrls = [];
+  var serviceName;
+  var serviceUrl;
   var currentService;
 
+  var listStarted = false;
+
   // Get available services from menu
-  for (let i = 8; i < servicesMenuItems.length - 2; i++) {
-    servicesList.push(servicesMenuItems[i].innerText);
-    servicesUrls.push(servicesMenuItems[i].href);
-    if (!servicesMenuItems[i].href) {
-      currentService = servicesMenuItems[i].innerText;
+  for (let i = 5; i < servicesMenuItems.length - 2; i++) {
+    serviceName = servicesMenuItems[i].innerText;
+    serviceUrl = servicesMenuItems[i].href;
+    if (listStarted) {
+      servicesList.push(serviceName);
+      servicesUrls.push(serviceUrl);
+      if (!serviceUrl) {
+        currentService = serviceName;
+      }
+    }
+    if (serviceName.includes("Any Favorite Service")) {
+      listStarted = true;
     }
   }
+
+  console.log("Available Services:\n" + servicesList);
 
   var lastService = localStorage.getItem("lastService");
 
