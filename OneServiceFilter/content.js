@@ -31,12 +31,12 @@
 
   // Get Services menu
   if (window.location.href.includes("/watchlist/")) {
-    films = document.getElementsByClassName('poster-list -p125 -grid -constrained')[0];
+    films = document.getElementsByClassName('grid -p125 -constrained')[0];
     if (!films) {
       films = document.getElementsByClassName('poster-list -p125 -grid -scaled128')[0];
     }
   } else {
-    films = document.getElementsByClassName('js-list-entries poster-list -p125 -grid film-list')[0];
+    films = document.getElementsByClassName('js-list-entries poster-list -p125 -grid')[0];
   }
 
   // If there are no films on the list for the selected service, end the script
@@ -160,10 +160,10 @@
             try {
               node = films.childNodes[i];
               try {
-                filmId = node.getElementsByTagName('div')[0].getAttributeNode('data-item-id').value;
+                filmId = node.getElementsByTagName('div')[0].getAttributeNode('data-film-id').value;
               } catch {
                 try {
-                  filmId = node.getElementsByTagName('div')[0].getAttributeNode('data-item-uid').value;
+                  filmId = node.getElementsByTagName('div')[0].getAttributeNode('data-object-id').value;
                 } catch (err) {
                   console.log("ERROR: Unable to get film id");
                   console.log("ERROR: " + err);
@@ -174,12 +174,9 @@
               if (pageText.search(filmId) != -1) {
                 films.removeChild(node);
                 try {
-                  filmName = node.getElementsByTagName('div')[0].getAttributeNode('data-film-name').value;
-                } catch {
-                  try {
-                    filmName = node.getElementsByTagName('div')[0].getAttributeNode('data-film-slug').value;
-                  } catch {filmName = filmId}
-                }
+                  filmName = node.getElementsByTagName('div')[0].getAttributeNode('data-item-full-display-name').value;
+                } catch {filmName = filmId}
+
                 console.log("'" + filmName + "' removed. Also available on '" + serviceName + "'");
                 numberOfFilms--;
               }
